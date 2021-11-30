@@ -10,14 +10,20 @@ go get github.com/hanson/aes
 
 # Document
 
+## import
+
+```
+import github.com/hanson/aes
+```
+
 ## CBC
 ```
 orig := "hello world"
 key := "0123456789012345"
 
-encryptCode := AesEncryptCBC(orig, key)
+encryptCode := aes.AesEncryptCBC(orig, key)
 fmt.Println("encrypt：" , encryptCode)
-decryptCode := AesDecryptCBC(encryptCode, key)
+decryptCode := aes.AesDecryptCBC(encryptCode, key)
 fmt.Println("decrypt：", decryptCode)
 ```
 
@@ -27,7 +33,7 @@ source := "hello world"
 fmt.Println("origin：", source)
 key := "ABCDEFGHIJKLMNO1" // 16 byte
 
-encryptCode, err := AesEncryptCFB([]byte(source), []byte(key))
+encryptCode, err := aes.AesEncryptCFB([]byte(source), []byte(key))
 if err != nil {
     log.Printf("err:%v", err)
     return
@@ -35,7 +41,7 @@ if err != nil {
 
 fmt.Println("encryptCode：", hex.EncodeToString(encryptCode))
 
-decryptCode, err := AesDecryptCFB(encryptCode, []byte(key))
+decryptCode, err := aes.AesDecryptCFB(encryptCode, []byte(key))
 if err != nil {
     log.Printf("err:%v", err)
     return
@@ -50,7 +56,7 @@ source := "hello world"
 fmt.Println("origin：", source)
 
 key := "1443flfsaWfdasds"
-encryptCode, err := AesCryptCTR([]byte(source), []byte(key))
+encryptCode, err := aes.AesCryptCTR([]byte(source), []byte(key))
 if err != nil {
     log.Printf("err:%v", err)
     return
@@ -58,7 +64,7 @@ if err != nil {
 
 fmt.Println("encryptCode：", string(encryptCode))
 
-decryptCode, err := AesCryptCTR(encryptCode, []byte(key))
+decryptCode, err := aes.AesCryptCTR(encryptCode, []byte(key))
 if err != nil {
     log.Printf("err:%v", err)
     return
@@ -74,10 +80,10 @@ fmt.Println("origin：", source)
 
 //16 byte
 key := "1443flfsaWfdas"
-encryptCode := AesEncryptECB([]byte(source), []byte(key))
+encryptCode := aes.AesEncryptECB([]byte(source), []byte(key))
 fmt.Println("encryptCode：", string(encryptCode))
 
-decryptCode := AesDecryptECB(encryptCode, []byte(key))
+decryptCode := aes.AesDecryptECB(encryptCode, []byte(key))
 
 fmt.Println("decryptCode：", string(decryptCode))
 ```
@@ -88,7 +94,7 @@ source := "hello world"
 fmt.Println("origin：", source)
 key := "1111111111111111" //16byte or 32byte
 
-encryptCode, err := AesEncryptOFB([]byte(source), []byte(key))
+encryptCode, err := aes.AesEncryptOFB([]byte(source), []byte(key))
 if err != nil {
     log.Printf("err:%v", err)
     return
@@ -96,7 +102,7 @@ if err != nil {
 
 fmt.Println("encryptCode：", hex.EncodeToString(encryptCode))
 
-decryptCode, err := AesDecryptOFB(encryptCode, []byte(key))
+decryptCode, err := aes.AesDecryptOFB(encryptCode, []byte(key))
 if err != nil {
     log.Printf("err:%v", err)
     return
